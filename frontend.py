@@ -20,3 +20,6 @@ class FrontendManager:
         ]
         messages = numbering_items(messages)
         print('\n'.join(messages))
+
+        msg = f'Enter your choice (from 1 to {len(messages)}): '
+        return input_valid_int(msg, 1, len(messages))

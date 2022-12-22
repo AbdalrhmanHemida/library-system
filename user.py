@@ -13,6 +13,12 @@ class User:
                 return True
         return False
 
+    def return_book(self, book):
+        for idx, mybook in enumerate(self.borrowed_books):
+            if mybook.id == book.id:
+                del self.borrowed_books[idx]
+                break
+                
     def __repr__(self):
         ret = f'User name: {self.name:15} - id: {self.id}\n\tBorrowed books:\n'
         for book in self.borrowed_books:

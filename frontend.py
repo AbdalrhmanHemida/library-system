@@ -30,10 +30,10 @@ class FrontendManager:
             choice = self.print_menu()
             if choice == 1:
                 self.add_book()
-            # elif choice == 2:
-            #     self.print_books()
-            # elif choice == 3:
-            #     self.print_name_prefix()
+            elif choice == 2:
+                self.print_books()
+            elif choice == 3:
+                self.print_name_prefix()
             elif choice == 4:
                 self.add_user()
             # elif choice == 5:
@@ -63,3 +63,16 @@ class FrontendManager:
     def print_users(self):
         users_str = '\n'.join([str(user) for user in self.backend.users])
         print(users_str)
+
+    def print_books(self):
+        # Let's "delegate" the call to a general function
+        self.print_name_prefix(just_print_all=True)
+
+    def print_name_prefix(self, just_print_all=False):
+        prefix = ''
+        if not just_print_all:
+            prefix = input('Enter book name prefix: ')
+
+        books = self.backend.get_books_with_prefix(prefix)
+        books_str = '\n'.join([str(book) for book in books])
+        print(books_str)

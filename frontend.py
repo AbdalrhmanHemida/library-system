@@ -46,5 +46,11 @@ class FrontendManager:
             else:
                 break
 
+    def add_user(self):
+        print('\nEnter user info:')
+        name = input('User name: ')
+        id = input('User id: ')
+        self.backend.add_user(name, id)
+
     def add_book(self):
         pass

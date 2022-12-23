@@ -9,3 +9,6 @@ class BackendManger:
 
     def add_user(self, name, id):
         self.users.append(User(name, id))
+        
+    def add_book(self, name, id, total_quantity):
+        self.books.append(Book(name, id, total_quantity))

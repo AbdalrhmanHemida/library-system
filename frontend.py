@@ -1,9 +1,10 @@
+from backend import BackendManger
 from helper_functions.helper_methods import *
 
 
 class FrontendManager:
     def __init__(self):
-        pass
+        self.backend = BackendManger()
 
     def print_menu(self):
         print('\nProgram Options:')
@@ -53,4 +54,8 @@ class FrontendManager:
         self.backend.add_user(name, id)
 
     def add_book(self):
-        pass
+        print('\nEnter book info:')
+        name = input('Book name: ')
+        id = input('Book id: ')
+        total_quantity = int(input('Total quantity: '))
+        self.backend.add_book(name, id, total_quantity)

@@ -40,8 +40,8 @@ class FrontendManager:
                 self.borrow_book()
             elif choice == 6:
                 self.return_book()
-            # elif choice == 7:
-            #     self.print_users_borrowed_book()
+            elif choice == 7:
+                self.print_users_borrowed_book()
             elif choice == 8:
                 self.print_users()
             else:
@@ -119,3 +119,17 @@ class FrontendManager:
             return
 
         self.backend.return_book(user_name, book_name)
+
+    def print_users_borrowed_book(self):
+        book_name = input('Book name: ')
+        if self.backend.get_book_by_name(book_name) is None:
+            print('Invalid book name!')
+        else:
+            users_lst = self.backend.get_users_borrowed_book(book_name)
+
+            if not users_lst:
+                print('\nNo one borrowed this book')
+            else:
+                print('\nList of users borrowed this book')
+                for user in users_lst:
+                    print(user.simple_repr())

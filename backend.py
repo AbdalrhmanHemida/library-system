@@ -16,3 +16,14 @@ class BackendManger:
     def get_books_with_prefix(self, prefix):
         return [book for book in self.books if book.name.startswith(prefix)]
 
+    def get_user_by_name(self, name):
+        for user in self.users:
+            if name == user.name:
+                return user
+        return None
+
+    def get_book_by_name(self, name):
+        for book in self.books:
+            if name == book.name:
+                return book
+        return None

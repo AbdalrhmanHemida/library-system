@@ -76,3 +76,29 @@ class FrontendManager:
         books = self.backend.get_books_with_prefix(prefix)
         books_str = '\n'.join([str(book) for book in books])
         print(books_str)
+
+    def read_user_name_and_book_name(self, trials=3):
+        """
+        The function tries to read valid user name and password up to #trials
+        If finally correct, it returns the read names, otherwise None, None
+        """
+        trials += 1
+
+        while trials > 0:
+            trials -= 1
+            print('Enter user name and book name')
+
+            user_name = input('User name: ')
+            if self.backend.get_user_by_name(user_name) is None:
+                print('Invalid user name!')
+                continue
+
+            book_name = input('Book name: ')
+            if self.backend.get_book_by_name(book_name) is None:
+                print('Invalid book name!')
+                continue
+
+            return user_name, book_name
+
+        print('You did several trials! Try later.')
+        return None, None

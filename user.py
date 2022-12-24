@@ -18,9 +18,14 @@ class User:
             if mybook.id == book.id:
                 del self.borrowed_books[idx]
                 break
-                
-    def __repr__(self):
-        ret = f'User name: {self.name:15} - id: {self.id}\n\tBorrowed books:\n'
-        for book in self.borrowed_books:
-            ret += f'\t{str(book)}\n'
+
+    def simple_repr(self, is_detailed = False):
+        ret = f'User name: {self.name:15} - id: {self.id}'
+        if is_detailed and self.borrowed_books:
+            ret += '\n\tBorrowed books:\n'
+            for book in self.borrowed_books:
+                ret += f'\t{str(book)}\n'
         return ret
+
+    def __repr__(self):
+        return self.simple_repr(True)

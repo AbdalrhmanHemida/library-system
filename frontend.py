@@ -38,8 +38,8 @@ class FrontendManager:
                 self.add_user()
             elif choice == 5:
                 self.borrow_book()
-            # elif choice == 6:
-            #     self.return_book()
+            elif choice == 6:
+                self.return_book()
             # elif choice == 7:
             #     self.print_users_borrowed_book()
             elif choice == 8:
@@ -111,3 +111,11 @@ class FrontendManager:
 
         if not self.backend.borrow_book(user_name, book_name):
             print('Failed to borrow the book')
+
+    def return_book(self):
+        user_name, book_name = self.read_user_name_and_book_name()
+
+        if user_name is None or book_name is None:
+            return
+
+        self.backend.return_book(user_name, book_name)

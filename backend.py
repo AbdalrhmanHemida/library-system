@@ -39,3 +39,7 @@ class BackendManger:
             user.borrow(book)
             return True
         return False
+
+    def return_book(self, user_name, book_name):
+        user = self.get_user_by_name(user_name)
+        book = self.get_book_by_name(book_name)

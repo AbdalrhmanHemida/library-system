@@ -42,7 +42,19 @@ class BackendManger:
 
     def return_book(self, user_name, book_name):
         user = self.get_user_by_name(user_name)
-        book = self.get_book_by_name(book_name)        book = self.get_book_by_name(book_name)
+        book = self.get_book_by_name(book_name)
+
+        if user is None or book is None:
+            return
+
+        if user.is_borrowed(book):
+            book.return_copy()
+            user.return_book(book)
+        else:
+            print('This user did not borrow this book')
+
+    def get_users_borrowed_book(self, book_name):
+        book = self.get_book_by_name(book_name)
 
         if book is None:
             return []

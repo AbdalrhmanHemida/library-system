@@ -27,3 +27,15 @@ class BackendManger:
             if name == book.name:
                 return book
         return None
+
+    def borrow_book(self, user_name, book_name):
+        user = self.get_user_by_name(user_name)
+        book = self.get_book_by_name(book_name)
+
+        if user is None or book is None:
+            return False
+
+        if book.borrow():
+            user.borrow(book)
+            return True
+        return False

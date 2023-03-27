@@ -5,7 +5,7 @@ class Book:
         self.total_quantity = total_quantity
         self.total_borrowed = 0
 
-    def borrow(self):
+    def borrow(self) -> bool:
         if self.total_quantity - self.total_borrowed == 0:
             return False
         self.total_borrowed += 1

@@ -7,7 +7,7 @@ class User:
     def borrow(self, book):
         self.borrowed_books.append(book)
 
-    def is_borrowed(self, book):
+    def is_borrowed(self, book) -> Bool:
         for mybook in self.borrowed_books:
             if mybook.id == book.id:
                 return True

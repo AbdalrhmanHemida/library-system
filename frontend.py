@@ -77,7 +77,7 @@ class FrontendManager:
         books_str = '\n'.join([str(book) for book in books])
         print(books_str)
 
-    def read_user_name_and_book_name(self, trials=3):
+    def read_user_name_and_book_name(self, trials=3) -> None:
         """
         The function tries to read valid user name and password up to #trials
         If finally correct, it returns the read names, otherwise None, None

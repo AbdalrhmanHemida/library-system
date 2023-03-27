@@ -3,7 +3,7 @@ def numbering_items(items):
     return items
 
 
-def input_valid_int(msg, start=0, end=None):
+def input_valid_int(msg, start=0, end=None) -> int:
     # keep iterating till the given input is valid
     # hidden assumption: both start and end either value or none. That is bad
     while True:

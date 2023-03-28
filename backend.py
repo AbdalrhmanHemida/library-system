@@ -1,5 +1,6 @@
 from Book import Book
 from user import User
+from typing import List, Optional
 
 
 class BackendManger:
@@ -36,12 +37,12 @@ class BackendManger:
 
        """
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Initializes a new instance of the BackendManager class."""
         self.books = []
         self.users = []
 
-    def add_user(self, name, id):
+    def add_user(self, name: str, id: str) -> None:
         """
           Adds a new user to the library system.
 
@@ -54,7 +55,7 @@ class BackendManger:
         """
         self.users.append(User(name, id))
 
-    def add_book(self, name, id, total_quantity):
+    def add_book(self, name: str, id: str, total_quantity: int) -> None:
         """
            Adds a new book to the library system.
 
@@ -69,7 +70,7 @@ class BackendManger:
        """
         self.books.append(Book(name, id, total_quantity))
 
-    def get_books_with_prefix(self, prefix):
+    def get_books_with_prefix(self, prefix: str) -> List[Book]:
         """
            Returns a list of books whose names start with the given prefix.
 
@@ -85,7 +86,7 @@ class BackendManger:
        """
         return [book for book in self.books if book.name.startswith(prefix)]
 
-    def get_user_by_name(self, name):
+    def get_user_by_name(self, name: str) -> Optional[User]:
         """
            Returns a User object with the given name.
 
@@ -104,7 +105,7 @@ class BackendManger:
                 return user
         return None
 
-    def get_book_by_name(self, name):
+    def get_book_by_name(self, name: str) -> Optional[Book]:
         """
             Returns a Book object with the given name.
 
@@ -118,12 +119,13 @@ class BackendManger:
             Book or None
                 The Book object with the given name if found, otherwise None.
         """
+
         for book in self.books:
             if name == book.name:
                 return book
         return None
 
-    def borrow_book(self, user_name, book_name):
+    def borrow_book(self, user_name: str, book_name: str) -> bool:
         """
             Allows a user to borrow a book from the library system.
 
@@ -139,6 +141,7 @@ class BackendManger:
             bool
                 True if the book is successfully borrowed, False otherwise.
         """
+      
         user = self.get_user_by_name(user_name)
         book = self.get_book_by_name(book_name)
 
@@ -150,7 +153,7 @@ class BackendManger:
             return True
         return False
 
-    def return_book(self, user_name, book_name):
+    def return_book(self, user_name: str, book_name: str) -> None:
         """
           Returns a borrowed book to the library.
 
@@ -161,6 +164,7 @@ class BackendManger:
           book_name : str
               The name of the book that is being returned.
         """
+      
         user = self.get_user_by_name(user_name)
         book = self.get_book_by_name(book_name)
 
@@ -173,7 +177,7 @@ class BackendManger:
         else:
             print('This user did not borrow this book')
 
-    def get_users_borrowed_book(self, book_name):
+    def get_users_borrowed_book(self, book_name: str) -> List[User]:
         """
          Returns a list of all users who borrowed a specific book.
 
@@ -188,6 +192,7 @@ class BackendManger:
              A list of all users who borrowed the specified book.
              An empty list is returned if the book does not exist in the library.
         """
+      
         book = self.get_book_by_name(book_name)
 
         if book is None:

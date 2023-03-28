@@ -24,7 +24,7 @@ class User:
         __repr__()
            Returns a detailed string representation of the user's information.
     """
-    def __init__(self, name, id):
+    def __init__(self, name: str, id: int):
         """
             Constructs a new User object.
 
@@ -35,11 +35,12 @@ class User:
             id : str
               The unique identifier of the user.
         """
+        
         self.name = name
         self.id = id
         self.borrowed_books = []
 
-    def borrow(self, book):
+    def borrow(self, book: Book):
         """
             Adds a new borrowed book to the user's list of borrowed books.
 
@@ -50,7 +51,7 @@ class User:
         """
         self.borrowed_books.append(book)
 
-    def is_borrowed(self, book):
+    def is_borrowed(self, book: Book) -> bool:
         """
             Checks whether the user has borrowed the specified book.
 
@@ -64,12 +65,13 @@ class User:
             bool
               True if the user has borrowed the specified book, False otherwise.
         """
+        
         for mybook in self.borrowed_books:
             if mybook.id == book.id:
                 return True
         return False
 
-    def return_book(self, book):
+    def return_book(self, book: Book):
         """
             Removes the specified borrowed book from the user's list of borrowed books.
 
@@ -78,12 +80,13 @@ class User:
             book : Book
               The book object to be removed from the user's list of borrowed books.
         """
+      
         for idx, mybook in enumerate(self.borrowed_books):
             if mybook.id == book.id:
                 del self.borrowed_books[idx]
                 break
 
-    def simple_repr(self, is_detailed = False):
+    def simple_repr(self, is_detailed: bool = False) -> str:
         """
             Returns a string representation of the user.
 
@@ -98,6 +101,7 @@ class User:
             str
                A string representation of the user.
        """
+      
         ret = f'User name: {self.name:15} - id: {self.id}'
         if is_detailed and self.borrowed_books:
             ret += '\n\tBorrowed books:\n'
@@ -105,7 +109,7 @@ class User:
                 ret += f'\t{str(book)}\n'
         return ret
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """
             Returns a detailed string representation of the user.
 

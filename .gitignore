@@ -6,3 +6,4 @@ __pycache__/Book.cpython-310.pyc
 __pycache__/frontend.cpython-310.pyc
 __pycache__/user.cpython-310.pyc
 helper_functions/__pycache__/helper_methods.cpython-310.pyc
+*.xml

@@ -1,3 +1,6 @@
+from Book import Book
+
+
 class User:
     """
         A class representing a user of a library.
